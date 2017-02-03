@@ -1,0 +1,36 @@
+Hello Tobias,
+Thank you for taking the time to come in today.
+As promised here is the coding challenge.
+--
+CODE CHALLENGE K.LAB
+# Description
+Your task is to create a chat-system backend in nodeJS. Specifically, you should run at least 2 independent instances of your server code.
+Upon data sent from a client to any of the backends, the data should be pushed to all other clients connected to any of the backend server instances.
+Upon first connection of a client, the backend should send the last 10 (or more) messages to that client.
+
+# Make sure
+- clients only get the same messages once.
+- clients only get messages for their specified channel.
+- all messages persist in redis for 24h.
+- the system should be horizontally scalable, meaning the number of server-instances should not change the system's behaviour!
+
+# Some rough tech spec
+- we supplied a barebones client. use it. no need to make it pretty. if it works, dont do anything to it. if you need to adapt/fix it, please do. you can clone it here: https://github.com/Klab-Berlin/backendTestClient
+- use redis (http://redis.io/documentation) as a database to store the messages for 24h.
+- use websocket connections (no fallback variant needed here) between client and server. no need to be multi-browser backwards compatible crap. latest chrome/firefox.
+ - use this base lib and wrapper  for websockets:
+   - https://github.com/Klab-Berlin/r2d2
+   - https://github.com/theturtle32/WebSocket-Node
+- a message should have channel, author, text, timestamp fields.
+- any node-lib you want to use, any additional DBs/tools you want to use are okay, but we are sure it works when i try it ;)
+
+# Goal
+The goal here is to find out how you solve the data sync problem.
+There are multiple means of achieving that, so how you do it will be the interesting part for us.
+Please add in comments to explain why you did it the way you chose. If you thought of other variants, do not code them, but briefly describe the architecture.
+Also, please add comments about how long it took you to do the steps. How long to design the architecture, how long for the code, how many iterations until it worked and what went wrong on the way. Please understand that we are not looking for a world record coding time or anything. We all make mistakes, so it's okay not to get it right at the first try, so please be honest!
+
+# Submitting
+The basic function that needs to work is opening 2 browser windows (current firefox/chrome.. just tell me which) connecting to 2 different server instances (different ports i suppose) and chat.
+Having a simple docker compose file  to make it easier for us to test is very much preferred.
+Send us the link to Github repo, don’t forget to put up a README file to show us how to run your solution and preferably with a short description of the approach you took.
